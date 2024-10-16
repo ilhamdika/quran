@@ -5,6 +5,7 @@ import TypeIt from "typeit-react";
 import Button from "./components/Button";
 import Card from "./components/Card";
 import HomePage from './Pages/Index'
+import SurahDetail from "./Pages/SurahDetail";
 import About from "./Pages/About";
 import Portfolio from "./Pages/Portfolio";
 import AOS from 'aos';
@@ -18,8 +19,7 @@ const app = () => {
     <LayoutPage>
         <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="/portfolio" element={<Portfolio />} /> */}
-            {/* <Route path="/about" element={<About />} /> */}
+            <Route path="/detailSurah/:nomorSurah" element={<SurahDetail />} />
         </Routes>
     </LayoutPage>
   );
