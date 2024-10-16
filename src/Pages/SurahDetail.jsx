@@ -29,6 +29,9 @@ const SurahDetail = () => {
 
     // console.log(ayat);
     // console.log(detailSurah);
+    const convertToArabicNumber = (num) => {
+        return num.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+    };
 
   return (
    <>
@@ -57,14 +60,17 @@ const SurahDetail = () => {
                         </div>
                     </div>
                     {ayat.map((item, index) => (
-                        <div className="border-2 border-slate-300 mt-10" key={index}>
+                        <div className="border-2 border-slate-300 mt-10 rounded-lg" key={index}>
                             <div className='text-right p-2'>
                                 <div className='flex justify-end'>
-                                    <h5 className="dark:text-white">{item.teksArab}</h5>
+                                    <h5 className="dark:text-white text-2xl">{item.teksArab}</h5>
+                                    <div className="ml-2 bg-gray-300 text-black rounded-full w-8 h-8 flex items-center justify-center">
+                                        {convertToArabicNumber(item.nomorAyat)}
+                                    </div>
                                 </div>
                             </div>
                             <div className='text-left p-2'>
-                                <h5 className="dark:text-white font-light">{item.teksLatin}</h5>
+                                <h5 className="dark:text-white font-light text-2xl">{item.teksLatin}</h5>
                             </div>
                             <div className='text-left p-2'>
                                 <h5 className="dark:text-white font-light">Arti: {item.teksIndonesia}</h5>
