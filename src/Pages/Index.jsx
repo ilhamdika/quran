@@ -50,7 +50,7 @@ export const Index = () => {
                     title={item.namaLatin}
                     arabText={item.nama}
                     surah={item.surah}
-                    href={item.nomor}
+                    href={'/detailSurah/' + item.nomor}
                     description={
                     <span
                         dangerouslySetInnerHTML={{
