@@ -6,8 +6,6 @@ import Button from "./components/Button";
 import Card from "./components/Card";
 import HomePage from './Pages/Index'
 import SurahDetail from "./Pages/SurahDetail";
-import About from "./Pages/About";
-import Portfolio from "./Pages/Portfolio";
 import AOS from 'aos';
 import { useEffect } from "react";
 
