@@ -10,6 +10,7 @@ const SurahDetail = () => {
     const [detailSurah, setDetailSurah] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const fetchSurah = async () => {
             try {
                 const response = await fetch(`https://equran.id/api/v2/surat/${nomorSurah}`);
@@ -41,7 +42,7 @@ const SurahDetail = () => {
                 <button onClick={() => navigate(-1)}>
                     <FaArrowLeft />
                 </button>
-                <div className="grid grid-cols-1 lg:h-screen xl:h-screen lg:flex-row dekstop:flex-row md:flex-row sm:h-auto sm:grid-cols-1 pt-10 sm:pt-32">
+                <div className="grid grid-cols-1 lg:h-screen xl:h-screen lg:flex-row dekstop:flex-row md:flex-row sm:h-auto sm:grid-cols-1 pt-10">
                     <div className="items-right">
                         <h1 className="text-3xl font-bold dark:text-white">{detailSurah.namaLatin}({detailSurah.arti})</h1>
                         <h1 className="text-3xl font-bold dark:text-white">{detailSurah.nama}</h1>

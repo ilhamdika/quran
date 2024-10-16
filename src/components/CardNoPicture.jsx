@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const CardNoPicture = ({className, title, description, href, target, surah, arabText, audio}) => {
   return (
-    <div className={`sm:h-96 sm:w-full sm:my-8 border-2 border-slate-300 mt-10` + className }>
+    <div className={`mx-2 lg:h-40 sm:h-30 sm:w-full sm:my-2 border-2 border-slate-300 mt-10` + className }>
       <div>
         <Link to={href} target={target}>
           <h3 className="text-3xl mb-2 dark:text-white hover:text-blue-500">
