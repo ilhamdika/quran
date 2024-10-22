@@ -13,11 +13,11 @@ export default function NavigationBar ({text, click}){
           link: "/"
         },
         {
-          name:"Portfolio",
-          link:"portfolio"
+          name:"Surah",
+          link:"surah"
         },
         {
-          name:"About Me",
+          name:"About Creator",
           link: "about"
         },
         
@@ -48,40 +48,29 @@ export default function NavigationBar ({text, click}){
         }, [prevScrollPos]);
 
     return (
-      <div className={`navbar ${visible ? 'mobile:block mobile:relative' : 'mobile:hidden'}`}>
-      <div className='shadow-tablet w-full fixed-absolute top-0 left-0 mobile:fixed mobile:bg-blue-500 mobile:dark:bg-gray-500 '>
-          <div className='tablet:flex items-center justify-between py-4 tablet:px-10 px-7'>
+      <div className={`navbar ${visible ? 'sm:block sm:relative' : 'sm:hidden'}`}>
+      <div className='shadow-md w-full fixed-absolute top-0 left-0 sm:fixed sm:bg-green-500 sm:dark:bg-gray-900 '>
+          <div className='md:flex items-center justify-between py-4 md:px-10 px-7'>
               <div className='text-3xl cursor-pointer flex items-center dark:text-white'>
                 <Link to='/'>
-                    MeIlham
+                    Quran
                 </Link>
               </div>
-              <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-4 cursor-pointer tablet:hidden'>
-                {open ? <IoCloseSharp /> : <BsList />}
+              <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-4 cursor-pointer md:hidden'>
+                {open ? <IoCloseSharp className='dark:text-white' /> : <BsList className='dark:text-white'/>}
               </div>
-              <ul className={`tablet:flex tablet:items-center tablet:pb-0 pb-12 absolute tablet:static  tablet:z-auto z-[-1] left-0 w-full tablet:w-auto mobile:bg-blue-500 tablet:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 ':'top-[-490px]'}`}>
-                  {/* <li>
-                        <Link href='/'>Home</Link>
-                  </li>
-                  <li>
-                        <Link href='/'>Portfolio</Link>
-                  </li>
-                  <li>
-                        <Link href='/'>About Me</Link>
-                  </li> */}
+              <ul className={`md:flex md:items-center md:pb-0 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto sm:bg-green-500 dark:bg-gray-900 md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 ':'top-[-490px]'}`}>
+                 
                   {
                     Menu.map((menu)=>(
-                      <li key={menu.name} onClick={closeMenu} className='laptop:ml-8 text-xl tablet:my-0 my-7'>
+                      <li key={menu.name} onClick={closeMenu} className='lg:ml-8 text-xl md:my-0 my-7'>
                         <Link to={menu.link}className='dark:text-white hover:text-gray-400 duration-500 ml-5 mr-10'>
                           {menu.name}
                         </Link>
                       </li>
                     ))
                   }
-                  {/* <Button onClick={click}
-                    className="text-white bg-slate-600 dark:bg-white dark:text-black ">
-                    {text}
-                  </Button> */}
+                 
               </ul>
           </div>
     </div>
