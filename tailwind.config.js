@@ -5,11 +5,12 @@ module.exports = {
     extend: {
       fontFamily: {
         Montserrat: "Montserrat",
+        arabic: ['"Scheherazade New"', 'serif'], 
+      },
+      colors: {
+        dark: '#2b2929',
       },
     },
-   
-  },
-  theme: {
     screens: {
       'sm': {'max': '639px'},
       'md': '768px',
@@ -17,14 +18,8 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
-
-    extend: {
-        colors: {
-          dark: '#2b2929',
-        },
-      },
   },
-  darkMode: 'class',
+  darkMode: 'class', 
   variants: {
     extend: {},
   },
