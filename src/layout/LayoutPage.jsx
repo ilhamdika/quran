@@ -19,9 +19,9 @@ export default function LayoutPage ({children}){
     return(
         <>
         <div className="dark:bg-dark">
-            <div className="mr-10 ml-10">
+            <div className="sm:mx-2">
                 {/* Navbar */}
-                <div className="mobile:fixed top-0 left-0 w-full z-50">
+                <div className="sm:fixed top-0 left-0 w-full z-50">
                 <NavigationBar
                 text={dark ? <FiMoon/> : <FiSun/> }
                 click={toggleTheme}
@@ -31,7 +31,7 @@ export default function LayoutPage ({children}){
                 </div>
 
                 {/* Konten */}
-                <div>
+                <div className="sm:pt-20 min-h-screen">
                     <main className="dark:bg-dark">
                         {children}
                     </main>
@@ -40,6 +40,9 @@ export default function LayoutPage ({children}){
                     <InfoBottom/>
                 </div>   
             </div>
+            <footer className="bg-gray-800 text-white py-6 text-center">
+                <p>&copy; 2024 Ilham Dika. All rights reserved.</p>
+            </footer>
         </div>
         </>
     )
