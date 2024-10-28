@@ -7,7 +7,7 @@ const SurahDetail = () => {
     const { nomorSurah } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
-    const [detailSurah, setDetailSurah] = useState([]);
+    const [detailSurah, setDetailSurah] = useState(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -19,38 +19,37 @@ const SurahDetail = () => {
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setLoading(false);
             }
         };
 
         fetchSurah();
     }, [nomorSurah]);
-    
-    const ayat = detailSurah.ayat;
 
-    // console.log(ayat);
-    // console.log(detailSurah);
     const convertToArabicNumber = (num) => {
         return num.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
     };
 
-  return (
-   <>
-    {
-        loading ? (
-            <div className="flex justify-center items-center h-screen">
-                <DotLoader color="#a9dbd2" loading={loading} size={150} />
-            </div>
-        ) : detailSurah ? (
-            <div className="">
-                <button onClick={() => navigate(-1)}>
-                    <FaArrowLeft />
-                </button>
-                <div className="grid grid-cols-1 lg:h-screen xl:h-screen lg:flex-row dekstop:flex-row md:flex-row sm:h-auto sm:grid-cols-1 pt-10">
-                    <div className="items-right">
-                        <h1 className="text-3xl font-bold dark:text-white">{detailSurah.namaLatin}({detailSurah.arti})</h1>
-                        <h1 className="text-3xl font-bold dark:text-white">{detailSurah.nama}</h1>
-                        <h5 className="text-xl font-bold dark:text-white">Jumlah Ayat: {detailSurah.jumlahAyat}</h5>
-                        <p className="dark:text-white">{<span dangerouslySetInnerHTML={{ __html: detailSurah.deskripsi }} />}</p>
+    return (
+        <>
+            {loading ? (
+                <div className="flex justify-center items-center h-screen">
+                    <DotLoader color="#a9dbd2" loading={loading} size={150} />
+                </div>
+            ) : detailSurah ? (
+                <div className="pt-10 px-4 lg:px-16">
+                    <button onClick={() => navigate(-1)} className="mb-4 flex items-center">
+                        <FaArrowLeft className="mr-2 dark:text-white" />
+                        <span className="dark:text-white">Kembali</span>
+                    </button>
+
+                    <div className="mb-10">
+                        <h1 className="text-3xl font-bold dark:text-white">{detailSurah.namaLatin} ({detailSurah.arti})</h1>
+                        <h2 className="text-3xl font-bold dark:text-white">{detailSurah.nama}</h2>
+                        <h5 className="text-xl font-bold dark:text-white mt-2">Jumlah Ayat: {detailSurah.jumlahAyat}</h5>
+                        <p className="dark:text-white mt-4">
+                            <span dangerouslySetInnerHTML={{ __html: detailSurah.deskripsi }} />
+                        </p>
                         <div className="mt-4">
                             <h5 className="dark:text-white font-light">Dengarkan Surat:</h5>
                             <audio controls className="w-full">
@@ -59,34 +58,33 @@ const SurahDetail = () => {
                             </audio>
                         </div>
                     </div>
-                    {ayat.map((item, index) => (
-                        <div className="border-2 border-slate-300 mt-10 rounded-lg" key={index}>
-                            <div className='text-right p-2'>
-                                <div className='flex justify-end'>
-                                    <h5 className="dark:text-white text-2xl">{item.teksArab}</h5>
-                                    <div className="ml-2 bg-gray-300 text-black rounded-full w-8 h-8 flex items-center justify-center">
-                                        {convertToArabicNumber(item.nomorAyat)}
+
+                    <div className="grid grid-cols-1 gap-4">
+                        {detailSurah.ayat?.map((item, index) => (
+                            <div key={index} className="border-2 border-slate-300 rounded-lg p-4">
+                                <div className="text-right">
+                                    <div className="flex justify-end items-center">
+                                        <h5 className="font-arabic dark:text-white text-2xl">{item.teksArab}</h5>
+                                        <div className="ml-2 bg-gray-300 text-black rounded-full w-8 h-8 flex items-center justify-center">
+                                            {convertToArabicNumber(item.nomorAyat)}
+                                        </div>
                                     </div>
                                 </div>
+                                <div className="text-left mt-2">
+                                    <h5 className="dark:text-white font-light text-xl">{item.teksLatin}</h5>
+                                    <h5 className="dark:text-white font-light mt-2">Arti: {item.teksIndonesia}</h5>
+                                </div>
                             </div>
-                            <div className='text-left p-2'>
-                                <h5 className="dark:text-white font-light text-2xl">{item.teksLatin}</h5>
-                            </div>
-                            <div className='text-left p-2'>
-                                <h5 className="dark:text-white font-light">Arti: {item.teksIndonesia}</h5>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
-        ) : (
-            <div className="flex justify-center items-center h-screen">
-                <h1 className="text-3xl font-bold dark:text-white">Surah not found</h1>
-            </div>
-        )
-    }
-   </>
-  )
-}
+            ) : (
+                <div className="flex justify-center items-center h-screen">
+                    <h1 className="text-3xl font-bold dark:text-white">Surah not found</h1>
+                </div>
+            )}
+        </>
+    );
+};
 
-export default SurahDetail
+export default SurahDetail;
