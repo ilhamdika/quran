@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { CgProfile } from "react-icons/cg";
 import Profile from '../assets/images/profile.jpeg';
 import { DotLoader } from "react-spinners";
 
@@ -50,14 +51,20 @@ const About = () => {
             Want to collaborate? Feel free to reach out:
           </p>
           <div className="flex justify-center space-x-6 mt-4">
-            <a href="mailto:your.email@example.com" className="text-blue-500 dark:text-blue-400 text-2xl transition-transform transform hover:scale-110 duration-300">
+            <a href="mailto:ilham27dika@gmail.com" className="text-blue-500 dark:text-blue-400 text-2xl transition-transform transform hover:scale-110 duration-300">
               <FaEnvelope />
             </a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-400 text-2xl transition-transform transform hover:scale-110 duration-300">
+            <a href="https://github.com/ilhamdika" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-400 text-2xl transition-transform transform hover:scale-110 duration-300">
               <FaGithub />
             </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-300 text-2xl transition-transform transform hover:scale-110 duration-300">
+            <a href="https://www.linkedin.com/in/ilham-dika-permana/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-300 text-2xl transition-transform transform hover:scale-110 duration-300">
               <FaLinkedin />
+            </a>
+            <a href="https://www.instagram.com/ilham_dika/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-300 text-2xl transition-transform transform hover:scale-110 duration-300">
+              <FaInstagram />
+            </a>
+            <a href="https://ilham-dika.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-300 text-2xl transition-transform transform hover:scale-110 duration-300">
+              <CgProfile />
             </a>
           </div>
         </div>
